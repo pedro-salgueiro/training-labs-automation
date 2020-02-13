@@ -35,4 +35,3 @@ Invoke-LabCommand -ComputerName $ComputerNames  -ActivityName 'Create certificat
     Import-PfxCertificate -Exportable -Password (ConvertTo-SecureString "$certificatePassword" -AsPlainText -force) -CertStoreLocation "cert:\LocalMachine\Root" -FilePath "C:\Temp\$certificate"    
 } -ArgumentList $certificate, $certificatePassword
 
-# To create new cert: New-SelfSignedCertificate -DnsName "*.cmflab.local" -CertStoreLocation "cert:\LocalMachine\My" -FriendlyName cmflablocal 

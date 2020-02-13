@@ -19,8 +19,8 @@ Invoke-LabCommand -ComputerName $ComputerNames  -ActivityName 'Create AD Account
     )
 
     # Service User
-    $userName = "CMFService";
-    $password = "CMF123Service";
+    $userName = "SVCADMIN";
+    $password = 'Pa$$w0rd';
     New-ADUser -Name $userName -Enabled $true -PasswordNeverExpires $true -CannotChangePassword $true -AccountPassword (ConvertTo-SecureString $password -AsPlainText -force) -passThru 
     Add-ADGroupMember -Identity "Remote Desktop Users" -Members $userName
 
@@ -35,7 +35,7 @@ Invoke-LabCommand -ComputerName $ComputerNames  -ActivityName 'Create AD Account
     # Trainee accounts
     For ($i=1; $i -le 25; $i++) {
         $userName = "training$($i.ToString('00'))";
-        $password = "trgCMF$($i.ToString('00'))";
+        $password = "trgLAB$($i.ToString('00'))";
 
         New-ADUser -Name $userName -Enabled $true -PasswordNeverExpires $true -CannotChangePassword $true -AccountPassword (ConvertTo-SecureString $password -AsPlainText -force) -passThru 
         Add-ADGroupMember -Identity "Remote Desktop Users" -Members $userName
@@ -55,7 +55,7 @@ Invoke-LabCommand -ComputerName $ComputerNames  -ActivityName 'Update policies' 
         [string] $shortDomain
     )
 
-    $userName = "CMFService";
+    $userName = "SVCADMIN";
     Add-LocalGroupMember -Group "Administrators" -Member "$shortDomain\$userName"
 
     # Trainer accounts

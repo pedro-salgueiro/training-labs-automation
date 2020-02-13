@@ -1,14 +1,6 @@
 # Introduction
 
-Going from manual deployment to continuous deployment can be a hard path. One of the toughest challenge is to build increasingly complex virtual environments to simulate common production scenarios. This small framework builds a complete lab environment for a training classroom automatically. Each trainee gets his own virtual machine, that he can connect to using Remote Desktop. You only have to set it up and tell the system how many machines (trainees) to configure.
-
-The scripts are also useful for setting up testing scenarios and as a demonstration of applying Desired State Configuration (DSC) to implement Configuration Management in your organization.
-
-# About the classroom virtual labs
-
-The best option to prepare a class with hands-on is to deliver a clean environment to each trainee. But creating a virtual machine for each student for a complex environment like ours manually can be a daunting task. With this set of scripts this option is not only viable but easy because it is automatic. In the end the lab will look like the next picture.
-
-![Virtual Lab Overview][lab-overview]
+Going from manual deployment to continuous deployment can be a hard path. One of the toughest challenge is to build increasingly complex virtual environments to simulate common production scenarios. This small framework builds a complete lab environment.
 
 # AutomatedLab
 
@@ -72,9 +64,6 @@ explorer C:\LabSources\ISOs
 
 ## Download dependencies:
 
-To use the Critical Manufacturing UIs from within the virtual machines the following dependencies are also required:
-
-- Microsoft Silverlight Runtime (Silverlight_x64.exe) available [here](http://go.microsoft.com/fwlink/?LinkID=229321).
 - Google Chrome Offline Installer available [here](https://www.google.com/intl/en/chrome/?standalone=1).
 
 For the sake of simplicy the system expects to find them on the same folder as the ISOs:

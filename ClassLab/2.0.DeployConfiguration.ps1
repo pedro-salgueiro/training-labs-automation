@@ -15,18 +15,18 @@ Configuration SQLInstall
         }
 
         SqlSetup 'OnlineInstance' {
-            InstanceName          = 'ONLINE'
+            InstanceName          = 'SQL2017'
             Features              = 'SQLENGINE,AS'
             SourcePath            = 'C:\SQL2017'
             SQLSysAdminAccounts   = @('Administrators')
             ASSysAdminAccounts    = @('Administrators')	
 
-            InstallSQLDataDir     = 'C:\STORAGE\ONLINE\MSSQL2017\Data'
-            SQLUserDBDir          = 'C:\STORAGE\ONLINE\MSSQL2017\Data'
-            SQLUserDBLogDir       = 'C:\STORAGE\ONLINE\MSSQL2017\Data'
-            SQLTempDBDir          = 'C:\STORAGE\ONLINE\MSSQL2017\Data'
-            SQLTempDBLogDir       = 'C:\STORAGE\ONLINE\MSSQL2017\Data'
-            SQLBackupDir          = 'C:\STORAGE\ONLINE\MSSQL2017\Backup'               
+            InstallSQLDataDir     = 'C:\STORAGE\SQL2017\MSSQL2017\Data'
+            SQLUserDBDir          = 'C:\STORAGE\SQL2017\MSSQL2017\Data'
+            SQLUserDBLogDir       = 'C:\STORAGE\SQL2017\MSSQL2017\Data'
+            SQLTempDBDir          = 'C:\STORAGE\SQL2017\MSSQL2017\Data'
+            SQLTempDBLogDir       = 'C:\STORAGE\SQL2017\MSSQL2017\Data'
+            SQLBackupDir          = 'C:\STORAGE\SQL2017\MSSQL2017\Backup'               
 
             SQLSvcAccount         = $Node.adminCredential
             AgtSvcAccount         = $Node.adminCredential
@@ -48,31 +48,31 @@ Configuration SQLInstall
             DependsOn             = '[WindowsFeature]NetFramework45'
         }
 
-        SqlServerLogin AddOnlineSqlLogin {
+        SqlServerLogin AddSQL2017SqlLogin {
             Ensure                         = 'Present'
             Name                           = $Node.SQLUserName
             LoginType                      = 'SqlLogin'
             ServerName                     = $Node.NodeName
-            InstanceName                   = "Online"
+            InstanceName                   = "SQL2017"
             LoginCredential                = $Node.SQLUserCredential
             LoginMustChangePassword        = $false
             LoginPasswordExpirationEnabled = $false
             LoginPasswordPolicyEnforced    = $false
             PsDscRunAsCredential           = $Node.SqlServiceCredential
 
-            DependsOn                      = '[SqlSetup]OnlineInstance'
+            DependsOn                      = '[SqlSetup]SQL2017Instance'
         }
 
-        SqlServerRole Add_sysadmin_to_online_sql_user
+        SqlServerRole Add_sysadmin_to_SQL2017_sql_user
         {
             Ensure               = 'Present'
             ServerRoleName       = 'sysadmin'
             MembersToInclude     = $Node.SQLUserName
             ServerName           = $Node.NodeName
-            InstanceName         = 'Online'
+            InstanceName         = 'SQL2017'
             PsDscRunAsCredential = $SqlAdministratorCredential
 
-            DependsOn            = '[SqlServerLogin]AddOnlineSqlLogin'
+            DependsOn            = '[SqlServerLogin]AddSQL2017SqlLogin'
         }
     }
 }
