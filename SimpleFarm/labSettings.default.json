@@ -1,7 +1,7 @@
 {
-    "labName" : "SimpleFarmLab",
+    "labName" : "AlwaysOnLab",
     "addressSpace": "192.168.90.0/24",
-    "labPrefix": "SF",
+    "labPrefix": "AOL",
     "numberOfLabMachines": 3
     
 }

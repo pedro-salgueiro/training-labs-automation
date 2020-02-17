@@ -1,11 +1,3 @@
-# #################################################################################################
-# Critical Manufacturing Training Labs
-#
-# Author: Pedro Salgueiro
-# Purpose: Create a server node and a separate domain controller for training purpose
-#
-# #################################################################################################
-
 $UtilsPath = Join-Path -Path $PSScriptRoot -ChildPath '..\Utils';
 Import-Module $UtilsPath\Helpers.psm1
 

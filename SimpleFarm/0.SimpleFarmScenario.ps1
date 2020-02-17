@@ -1,12 +1,4 @@
-﻿# #################################################################################################
-# Critical Manufacturing Training Labs
-#
-# Author: Pedro Salgueiro
-# Purpose: Create a simple application server farm and sql server farm for training purposes
-#
-# #################################################################################################
-
-$UtilsPath = Join-Path -Path $PSScriptRoot -ChildPath '..\Utils';
+﻿$UtilsPath = Join-Path -Path $PSScriptRoot -ChildPath '..\Utils';
 Import-Module $UtilsPath\Helpers.psm1
 
 $labConfigRoot = $PSScriptRoot

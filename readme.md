@@ -75,10 +75,7 @@ explorer C:\LabSources\ISOs
 
 ## Get the training-labs-automation scripts
 
-Clone the training-labs-automation repo:
-``` PowerShell
-git clone https://github.com/criticalmanufacturing/training-labs-automation.git 
-```
+Clone the lab repo:
 
 Configure the framework:
 

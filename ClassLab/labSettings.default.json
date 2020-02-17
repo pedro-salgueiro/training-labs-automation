@@ -2,5 +2,8 @@
     "labName" : "ClassLab",
     "addressSpace": "192.168.72.0/24",
     "labPrefix": "CL",
-    "numberOfLabMachines": 4
+    "numberOfLabMachines": 4,
+    "startingMachineNumber": 1,
+    "certificateFile" : "",
+    "certificatePassword" : ""   
 }

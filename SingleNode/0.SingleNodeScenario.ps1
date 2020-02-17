@@ -1,12 +1,4 @@
-﻿# #################################################################################################
-# Critical Manufacturing Training Labs
-#
-# Author: Pedro Salgueiro
-# Purpose: Create a server node and a separate domain controller for training purpose
-#
-# #################################################################################################
-
-$UtilsPath = Join-Path -Path $PSScriptRoot -ChildPath '..\Utils';
+﻿$UtilsPath = Join-Path -Path $PSScriptRoot -ChildPath '..\Utils';
 Import-Module $UtilsPath\Helpers.psm1
 
 $settings = (Get-Content (Join-Path -Path $PSScriptRoot -ChildPath '..\settings.user.json') ) | ConvertFrom-Json
