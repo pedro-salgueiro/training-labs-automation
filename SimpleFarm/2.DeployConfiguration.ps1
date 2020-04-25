@@ -28,9 +28,7 @@ $ConfigurationData = @{
             SQLInstanceName             = 'PROD'
             SQLUserName                 = $settings.sqlUser
             SQLUserCredential           = $sqlUserCredential
-            OnlineAvailabilityGroupName = "AGONLINE"
-            OdsAvailabilityGroupName    = "AGODS"
-            DwhAvailabilityGroupName    = "AGDWH"
+            OnlineAvailabilityGroupName = "AGONLINE"            
         },
         @{
             NodeName = "$($labSettings.labPrefix)SQLSRV01"

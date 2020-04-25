@@ -21,24 +21,6 @@ Configuration AvailabilityGroups
                 DependsOn            = '[SqlAlwaysOnService]EnableAlwaysOn', '[SqlServerEndpoint]HADREndpoint', '[SqlServerPermission]AddNTServiceClusSvcPermissions'
                 PsDscRunAsCredential = $SqlAdministratorCredential
             }
-
-            SqlAG AddOdsAG {
-                Ensure               = 'Present'
-                Name                 = $Node.OdsAvailabilityGroupName
-                InstanceName         = $Node.SQLInstanceName
-                ServerName           = $Node.NodeName
-                DependsOn            = '[SqlAlwaysOnService]EnableAlwaysOn', '[SqlServerEndpoint]HADREndpoint', '[SqlServerPermission]AddNTServiceClusSvcPermissions'
-                PsDscRunAsCredential = $SqlAdministratorCredential
-            }
-
-            SqlAG AddDwhAG {
-                Ensure               = 'Present'
-                Name                 = $Node.DwhAvailabilityGroupName
-                InstanceName         = $Node.SQLInstanceName
-                ServerName           = $Node.NodeName
-                DependsOn            = '[SqlAlwaysOnService]EnableAlwaysOn', '[SqlServerEndpoint]HADREndpoint', '[SqlServerPermission]AddNTServiceClusSvcPermissions'
-                PsDscRunAsCredential = $SqlAdministratorCredential
-            }
         }
 
         if ( $Node.Role -eq 'SecondaryReplica' ) {
@@ -54,33 +36,7 @@ Configuration AvailabilityGroups
                 DependsOn                  = '[SqlAlwaysOnService]EnableAlwaysOn'
                 ProcessOnlyOnActiveNode    = $Node.ProcessOnlyOnActiveNode
                 PsDscRunAsCredential       = $SqlAdministratorCredential
-            }
-
-            SqlAGReplica AddOdsReplica {
-                Ensure                     = 'Present'
-                Name                       = $Node.OdsAvailabilityGroupName
-                AvailabilityGroupName      = $Node.OdsAvailabilityGroupName
-                ServerName                 = $Node.NodeName
-                InstanceName               = $Node.SQLInstanceName
-                PrimaryReplicaServerName   = ( $AllNodes | Where-Object { $_.Role -eq 'PrimaryReplica' } ).NodeName
-                PrimaryReplicaInstanceName = ( $AllNodes | Where-Object { $_.Role -eq 'PrimaryReplica' } ).SQLInstanceName
-                DependsOn                  = '[SqlAlwaysOnService]EnableAlwaysOn'
-                ProcessOnlyOnActiveNode    = $Node.ProcessOnlyOnActiveNode
-                PsDscRunAsCredential       = $SqlAdministratorCredential
-            }
-
-            SqlAGReplica AddDwbReplica {
-                Ensure                     = 'Present'
-                Name                       = $Node.DwhAvailabilityGroupName
-                AvailabilityGroupName      = $Node.DwhAvailabilityGroupName
-                ServerName                 = $Node.NodeName
-                InstanceName               = $Node.SQLInstanceName
-                PrimaryReplicaServerName   = ( $AllNodes | Where-Object { $_.Role -eq 'PrimaryReplica' } ).NodeName
-                PrimaryReplicaInstanceName = ( $AllNodes | Where-Object { $_.Role -eq 'PrimaryReplica' } ).SQLInstanceName
-                DependsOn                  = '[SqlAlwaysOnService]EnableAlwaysOn'
-                ProcessOnlyOnActiveNode    = $Node.ProcessOnlyOnActiveNode
-                PsDscRunAsCredential       = $SqlAdministratorCredential
-            }
+            }            
         }
     }
 }

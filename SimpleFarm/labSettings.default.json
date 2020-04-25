@@ -2,6 +2,5 @@
     "labName" : "AlwaysOnLab",
     "addressSpace": "192.168.90.0/24",
     "labPrefix": "AOL",
-    "numberOfLabMachines": 3
-    
+    "numberOfLabMachines": 3    
 }
